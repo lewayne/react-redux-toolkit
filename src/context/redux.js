@@ -3,14 +3,14 @@ import { configureStore, createSlice } from "@reduxjs/toolkit";
 const todoSlice = createSlice({
   name: "todo",
   initialState: [
-    { id: 1, text: "Faire les courses", done: false },
-    { id: 2, text: "Ménage !", done: true },
-    { id: 3, text: "autres !", done: false },
+    { id: 1, text: "Do the shopping", done: false },
+    { id: 2, text: "Play football !", done: true },
+    { id: 3, text: "Others tasks !", done: false },
   ],
 
   reducers: {
     addTask: (state, action) => {
-      //  { type : "todo/addTask", payload: "Aller faire les courses" }
+      //  { type : "todo/addTask", payload: "Do the shopping" }
       const newTask = {
         id: Date.now(),
         done: false,
@@ -23,9 +23,9 @@ const todoSlice = createSlice({
       const task = state.find((t) => t.id === action.payload);
       task.done = !task.done;
     },
-    updateTask:(state, action)=> {
-      //  { type : "todo/updateTask", payload: text } 
-      state.map((t) => { 
+    updateTask: (state, action) => {
+      //  { type : "todo/updateTask", payload: text }
+      state.map((t) => {
         if (t.id === action.payload.id) return action.payload;
         else return t;
       });
